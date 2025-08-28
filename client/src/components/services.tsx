@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { 
   Sparkles, 
   Zap, 
@@ -17,37 +18,43 @@ const Services = () => {
       icon: <Sparkles className="h-8 w-8 text-primary" />,
       title: "Advanced Facials",
       description: "Deep cleansing and rejuvenating facial treatments using premium skincare products and techniques.",
-      iconBg: "bg-primary/10"
+      iconBg: "bg-primary/10",
+      link: "/services/advanced-facials"
     },
     {
       icon: <Zap className="h-8 w-8 text-accent" />,
       title: "Laser Treatments",
       description: "State-of-the-art laser therapy for hair removal, skin resurfacing, and pigmentation correction.",
-      iconBg: "bg-accent/10"
+      iconBg: "bg-accent/10",
+      link: "/services/laser-treatments"
     },
     {
       icon: <Syringe className="h-8 w-8 text-primary" />,
       title: "Aesthetic Injectables",
       description: "Professional botox, dermal fillers, and anti-aging treatments for natural-looking results.",
-      iconBg: "bg-primary/10"
+      iconBg: "bg-primary/10",
+      link: "/services/aesthetic-injectables"
     },
     {
       icon: <Leaf className="h-8 w-8 text-accent" />,
       title: "Chemical Peels",
       description: "Customized chemical peels to improve skin texture, reduce acne scars, and achieve radiant skin.",
-      iconBg: "bg-accent/10"
+      iconBg: "bg-accent/10",
+      link: "/services/chemical-peels"
     },
     {
       icon: <Microscope className="h-8 w-8 text-primary" />,
       title: "Skin Analysis",
       description: "Comprehensive skin assessment using advanced diagnostic tools to create personalized treatment plans.",
-      iconBg: "bg-primary/10"
+      iconBg: "bg-primary/10",
+      link: "/services/skin-analysis"
     },
     {
       icon: <Heart className="h-8 w-8 text-accent" />,
       title: "Wellness Therapy",
       description: "Holistic treatments combining skincare with relaxation therapy for overall well-being.",
-      iconBg: "bg-accent/10"
+      iconBg: "bg-accent/10",
+      link: "/services/wellness-therapy"
     }
   ];
 
@@ -94,13 +101,15 @@ const Services = () => {
                   <p className="text-muted-foreground mb-6" data-testid={`service-description-${index}`}>
                     {service.description}
                   </p>
-                  <Button 
-                    variant="link" 
-                    className="text-primary font-semibold hover:text-accent p-0"
-                    data-testid={`service-learn-more-${index}`}
-                  >
-                    Learn More →
-                  </Button>
+                  <Link href={service.link}>
+                    <Button 
+                      variant="link" 
+                      className="text-primary font-semibold hover:text-accent p-0"
+                      data-testid={`service-learn-more-${index}`}
+                    >
+                      Learn More →
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>
