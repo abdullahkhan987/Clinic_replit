@@ -85,19 +85,29 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-32 bg-white relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/20 to-accent/20"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-20"
           variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-4 gradient-text" data-testid="contact-title">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 mb-8">
+            <span className="text-primary font-semibold text-sm">✨ Get In Touch</span>
+          </div>
+          <h2 className="text-5xl font-bold mb-6 gradient-text" data-testid="contact-title">
             Contact Us
           </h2>
-          <p className="text-xl text-muted-foreground" data-testid="contact-subtitle">
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto" data-testid="contact-subtitle">
             Ready to start your skin transformation journey? Get in touch with us today
           </p>
         </motion.div>
@@ -208,9 +218,9 @@ const Contact = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <Card className="shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6 text-card-foreground" data-testid="contact-form-title">
+            <Card className="shadow-2xl border border-white/20 bg-white/80 backdrop-blur-sm">
+              <CardContent className="p-10">
+                <h3 className="text-3xl font-bold mb-8 gradient-text" data-testid="contact-form-title">
                   Send us a Message
                 </h3>
 
@@ -333,7 +343,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={submitContactMutation.isPending}
-                    className="w-full gradient-bg text-primary-foreground py-4 font-semibold hover:opacity-90"
+                    className="w-full gradient-bg text-white py-4 font-bold hover:opacity-90 hover:scale-105 transition-all duration-300 neon-glow text-lg"
                     data-testid="button-send-message"
                   >
                     {submitContactMutation.isPending ? "Sending..." : "Send Message"}

@@ -90,24 +90,25 @@ const Services = () => {
               variants={fadeInVariants}
               whileHover="hover"
             >
-              <Card className="card-hover h-full" data-testid={`service-card-${index}`}>
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 ${service.iconBg} rounded-xl flex items-center justify-center mb-6`}>
+              <Card className="card-hover h-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20" data-testid={`service-card-${index}`}>
+                <CardContent className="p-8 relative z-10">
+                  <div className={`w-20 h-20 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 text-card-foreground" data-testid={`service-title-${index}`}>
+                  <h3 className="text-2xl font-bold mb-4 text-card-foreground" data-testid={`service-title-${index}`}>
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6" data-testid={`service-description-${index}`}>
+                  <p className="text-muted-foreground mb-8 leading-relaxed" data-testid={`service-description-${index}`}>
                     {service.description}
                   </p>
                   <Link href={service.link}>
                     <Button 
                       variant="link" 
-                      className="text-primary font-semibold hover:text-accent p-0"
+                      className="text-primary font-bold hover:text-accent p-0 text-base group"
                       data-testid={`service-learn-more-${index}`}
                     >
-                      Learn More →
+                      Learn More 
+                      <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
                     </Button>
                   </Link>
                 </CardContent>

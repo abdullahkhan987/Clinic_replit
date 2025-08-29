@@ -50,26 +50,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 nav-sticky border-b border-border" data-testid="navbar">
+    <nav className="fixed top-0 left-0 right-0 z-50 nav-sticky" data-testid="navbar">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold gradient-text" data-testid="logo">
+            <h1 className="text-3xl font-bold gradient-text" data-testid="logo">
               Ukaash
             </h1>
+            <div className="ml-3 w-2 h-2 bg-accent rounded-full animate-pulse"></div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-10">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  className={`px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full ${
                     activeSection === link.href.slice(1)
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-primary"
+                      ? "text-primary bg-primary/10 border border-primary/20"
+                      : "text-gray-700 hover:text-primary hover:bg-primary/5"
                   }`}
                   data-testid={`nav-link-${link.label.toLowerCase()}`}
                 >
@@ -81,7 +82,7 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <Button 
-              className="gradient-bg text-primary-foreground hover:opacity-90"
+              className="gradient-bg text-white hover:opacity-90 hover:scale-105 transition-all duration-300 px-8 py-3 font-semibold neon-glow"
               data-testid="button-book-appointment-desktop"
             >
               Book Appointment
@@ -92,20 +93,20 @@ const Navbar = () => {
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="hover:bg-primary/10" data-testid="button-mobile-menu">
+                  <Menu className="h-6 w-6 text-primary" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full">
-                <div className="px-4 pt-8 pb-6 space-y-4">
+              <SheetContent side="right" className="w-full glass-card">
+                <div className="px-4 pt-8 pb-6 space-y-6">
                   {navLinks.map((link) => (
                     <button
                       key={link.href}
                       onClick={() => scrollToSection(link.href)}
-                      className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                      className={`block w-full text-left px-4 py-3 text-lg font-semibold transition-all duration-300 rounded-xl ${
                         activeSection === link.href.slice(1)
-                          ? "text-foreground"
-                          : "text-muted-foreground hover:text-primary"
+                          ? "text-primary bg-primary/10 border border-primary/20"
+                          : "text-gray-700 hover:text-primary hover:bg-primary/5"
                       }`}
                       data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
                     >
@@ -113,7 +114,7 @@ const Navbar = () => {
                     </button>
                   ))}
                   <Button 
-                    className="w-full gradient-bg text-primary-foreground hover:opacity-90 mt-4"
+                    className="w-full gradient-bg text-white hover:opacity-90 mt-6 py-4 font-semibold"
                     data-testid="button-book-appointment-mobile"
                   >
                     Book Appointment
