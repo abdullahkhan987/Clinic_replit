@@ -4,32 +4,32 @@ import { fadeInVariants, staggerContainer } from "@/lib/animations";
 const Gallery = () => {
   const galleryItems = [
     {
-      src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      src: "/images/treatment-room.jpg",
       alt: "Modern treatment room",
       title: "Treatment Room"
     },
     {
-      src: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      src: "/images/reception-area.jpg",
       alt: "Clinic waiting area",
       title: "Reception Area"
     },
     {
-      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      src: "/images/equipment.jpg",
       alt: "Advanced equipment",
       title: "Advanced Equipment"
     },
     {
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      src: "/images/consultation.jpg",
       alt: "Skincare consultation",
       title: "Consultation"
     },
     {
-      src: "https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      src: "/images/relaxation-area.jpg",
       alt: "Relaxing spa environment",
       title: "Relaxation Area"
     },
     {
-      src: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
+      src: "/images/products.jpg",
       alt: "Premium skincare products",
       title: "Premium Products"
     }

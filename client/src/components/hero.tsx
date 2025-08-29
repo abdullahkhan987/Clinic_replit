@@ -46,7 +46,7 @@ const Hero = () => {
             animate="visible"
           >
             <img
-              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+              src="/images/hero-clinic.jpg"
               alt="Modern aesthetic clinic interior"
               className="rounded-2xl shadow-2xl w-full h-auto"
               data-testid="hero-image"
