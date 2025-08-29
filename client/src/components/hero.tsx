@@ -78,18 +78,6 @@ const Hero = () => {
                 className="rounded-3xl shadow-2xl w-full h-auto relative z-10 border border-white/20"
                 data-testid="hero-image"
               />
-              {/* Floating badges */}
-              <div className="absolute -top-6 -right-6 glass-card px-4 py-3 rounded-2xl z-20 floating-animation">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-white text-sm font-medium">Available Now</span>
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -left-6 glass-card px-4 py-3 rounded-2xl z-20 floating-animation" style={{animationDelay: '3s'}}>
-                <div className="flex items-center gap-2">
-                  <span className="text-white text-sm font-medium">⭐ 4.9/5 Rating</span>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
