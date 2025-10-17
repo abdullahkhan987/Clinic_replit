@@ -1,71 +1,67 @@
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { useLocation } from "wouter";
 
 const Footer = () => {
-  const quickLinks = ["Home", "About", "Services", "Contact"];
-  const services = [
-    "Advanced Facials",
-    "Laser Treatments",
-    "Aesthetic Injectables", 
-    "Chemical Peels"
-  ];
+  const [, setLocation] = useLocation();
 
-  const scrollToSection = (section: string) => {
-    const element = document.querySelector(`#${section.toLowerCase()}`);
-    if (element) {
-      const offsetTop = (element as HTMLElement).offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-    }
+  const handleNavigation = (href: string) => {
+    setLocation(href);
   };
 
+  const quickLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  const services = [
+    { href: "/services/advanced-facials", label: "Advanced Facials" },
+    { href: "/services/laser-treatments", label: "Laser Treatments" },
+    { href: "/services/aesthetic-injectables", label: "Aesthetic Injectables" },
+    { href: "/services/chemical-peels", label: "Chemical Peels" },
+  ];
+
   return (
-    <footer className="animated-bg text-white py-20 relative overflow-hidden" data-testid="footer">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-xl floating-animation"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-xl floating-animation" style={{animationDelay: '2s'}}></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-4 gap-12">
+    <footer className="bg-gray-800 text-white py-16" data-testid="footer">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-3xl font-bold mb-6 text-white" data-testid="footer-brand">
+            <h3 className="text-2xl font-bold mb-4" data-testid="footer-brand">
               Ukaash
             </h3>
-            <p className="text-blue-100 mb-6 text-lg leading-relaxed" data-testid="footer-description">
-              Premium skin and aesthetic treatments for radiant, healthy skin.
+            <p className="text-gray-400 mb-4" data-testid="footer-description">
+              Leading the way in advanced skincare and aesthetic treatments.
             </p>
             <div className="flex space-x-4">
-              <button className="w-12 h-12 glass-card rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300" data-testid="footer-social-facebook">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300" data-testid="footer-social-facebook">
                 <Facebook className="h-6 w-6" />
-              </button>
-              <button className="w-12 h-12 glass-card rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300" data-testid="footer-social-instagram">
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300" data-testid="footer-social-instagram">
                 <Instagram className="h-6 w-6" />
-              </button>
-              <button className="w-12 h-12 glass-card rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300" data-testid="footer-social-twitter">
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300" data-testid="footer-social-twitter">
                 <Twitter className="h-6 w-6" />
-              </button>
-              <button className="w-12 h-12 glass-card rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300" data-testid="footer-social-linkedin">
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300" data-testid="footer-social-linkedin">
                 <Linkedin className="h-6 w-6" />
-              </button>
+              </a>
             </div>
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-white" data-testid="footer-quick-links-title">
+            <h4 className="text-lg font-semibold mb-4" data-testid="footer-quick-links-title">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link}>
+                <li key={link.href}>
                   <button
-                    onClick={() => scrollToSection(link.toLowerCase())}
-                    className="text-blue-100 hover:text-white transition-all duration-200 hover:translate-x-2 text-lg"
-                    data-testid={`footer-link-${link.toLowerCase()}`}
+                    onClick={() => handleNavigation(link.href)}
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    data-testid={`footer-link-${link.label.toLowerCase()}`}
                   >
-                    {link}
+                    {link.label}
                   </button>
                 </li>
               ))}
@@ -73,17 +69,18 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-white" data-testid="footer-services-title">
+            <h4 className="text-lg font-semibold mb-4" data-testid="footer-services-title">
               Services
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {services.map((service) => (
-                <li key={service}>
+                <li key={service.href}>
                   <button
-                    className="text-blue-100 hover:text-white transition-all duration-200 hover:translate-x-2 text-lg"
-                    data-testid={`footer-service-${service.toLowerCase().replace(/\s+/g, '-')}`}
+                    onClick={() => handleNavigation(service.href)}
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    data-testid={`footer-service-${service.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
-                    {service}
+                    {service.label}
                   </button>
                 </li>
               ))}
@@ -91,32 +88,20 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-white" data-testid="footer-contact-title">
-              Contact Info
+            <h4 className="text-lg font-semibold mb-4" data-testid="footer-contact-title">
+              Contact Us
             </h4>
-            <ul className="space-y-4 text-blue-100 text-lg">
-              <li className="flex items-start gap-3" data-testid="footer-address-line1">
-                <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
-                <div>
-                  <div>123 Beauty Boulevard</div>
-                  <div data-testid="footer-address-line2">Medical District, City 12345</div>
-                </div>
-              </li>
-              <li className="flex items-center gap-3" data-testid="footer-phone">
-                <div className="w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
-                (555) 123-4567
-              </li>
-              <li className="flex items-center gap-3" data-testid="footer-email">
-                <div className="w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
-                info@ukaashclinic.com
-              </li>
+            <ul className="space-y-2 text-gray-400">
+              <li data-testid="footer-address">123 Health St, Wellness City, 45678</li>
+              <li data-testid="footer-phone">(123) 456-7890</li>
+              <li data-testid="footer-email">contact@ukaash.com</li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-16 pt-8 text-center">
-          <p className="text-blue-100 text-lg" data-testid="footer-copyright">
-            © 2024 Ukaash Skin Clinic. All rights reserved. | Privacy Policy | Terms of Service
+        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+          <p data-testid="footer-copyright">
+            © {new Date().getFullYear()} Ukaash. All rights reserved.
           </p>
         </div>
       </div>

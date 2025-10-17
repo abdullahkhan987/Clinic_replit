@@ -1,89 +1,65 @@
 import { motion } from "framer-motion";
-import { Shield, Star, Award, Users } from "lucide-react";
-import { fadeInVariants, slideInLeftVariants, slideInRightVariants } from "@/lib/animations";
+import { Shield, Star } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="about" className="py-32 bg-white relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
-        <div className="absolute top-20 -left-20 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+    <section id="about" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            variants={slideInLeftVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative"
+            transition={{ duration: 0.8 }}
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur opacity-50 floating-animation"></div>
             <img
-              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-              alt="Professional dermatologist consultation"
-              className="rounded-3xl shadow-2xl w-full h-auto relative z-10 border border-white/20"
+              src="https://images.unsplash.com/photo-1576091160550-2173dba999ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+              alt="Doctor consulting with a patient"
+              className="rounded-lg shadow-lg w-full h-auto"
               data-testid="about-image"
             />
-            {/* Decorative badge */}
-            <div className="absolute -top-6 -left-6 glass-card px-6 py-4 rounded-2xl z-20">
-              <div className="flex items-center gap-3">
-                <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-primary font-bold">Expert Care</span>
-              </div>
-            </div>
           </motion.div>
           <motion.div
-            variants={slideInRightVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 mb-8">
-              <span className="text-primary font-semibold text-sm">✨ About Our Clinic</span>
-            </div>
-            <h2 className="text-5xl font-bold mb-8 gradient-text leading-tight" data-testid="about-title">
+            <h2 className="text-4xl font-extrabold text-gray-900 mb-6" data-testid="about-title">
               About Ukaash Skin Clinic
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="about-description">
-              At Ukaash Skin Clinic, we combine cutting-edge technology with
-              personalized care to deliver exceptional results. Our team of
-              certified dermatologists and aesthetic specialists are dedicated to
-              helping you achieve your skin goals.
+            <p className="text-lg text-gray-600 mb-6" data-testid="about-description">
+              At Ukaash, we are committed to providing top-tier skincare solutions. Our clinic is led by certified professionals who use state-of-the-art technology to ensure you receive the best care possible.
             </p>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed" data-testid="about-experience">
-              With over a decade of experience in advanced skincare treatments,
-              we've helped thousands of clients regain confidence through
-              healthier, more radiant skin.
+            <p className="text-lg text-gray-600 mb-8" data-testid="about-experience">
+              With a focus on personalized treatment plans, we have successfully helped countless clients achieve their desired skin outcomes.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-8">
-              <div className="flex items-start space-x-4 p-6 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
-                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <Shield className="h-8 w-8 text-primary" />
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-foreground mb-2" data-testid="feature-certified">
-                    Certified Experts
+                  <h3 className="text-xl font-semibold text-gray-900" data-testid="feature-certified">
+                    Certified Professionals
                   </h3>
                   <p className="text-gray-600">
-                    Licensed professionals with years of experience
+                    Our team consists of highly qualified and experienced experts.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4 p-6 rounded-2xl bg-gradient-to-r from-accent/5 to-accent/10 border border-accent/20">
-                <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <Star className="h-8 w-8 text-accent" />
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Star className="h-6 w-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-foreground mb-2" data-testid="feature-premium">
-                    Premium Care
+                  <h3 className="text-xl font-semibold text-gray-900" data-testid="feature-premium">
+                    Quality Care
                   </h3>
                   <p className="text-gray-600">
-                    Personalized treatments for optimal results
+                    We offer tailored treatments to meet your unique needs.
                   </p>
                 </div>
               </div>
