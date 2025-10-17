@@ -9,13 +9,15 @@ export const appointments = pgTable("appointments", {
   email: text("email").notNull(),
   phone: text("phone"),
   service: text("service").notNull(),
-  date: timestamp("date").notNull(),
+  date: text("date").notNull(),
   time: text("time").notNull(),
   confirmed: boolean("confirmed").default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const insertAppointmentSchema = createInsertSchema(appointments).omit({
+export const insertAppointmentSchema = createInsertSchema(appointments, {
+  phone: z.string().optional(),
+}).omit({
   id: true,
   confirmed: true,
   createdAt: true,

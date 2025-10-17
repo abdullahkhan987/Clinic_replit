@@ -56,10 +56,7 @@ const Appointments = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    mutation.mutate({
-      ...data,
-      date: new Date(data.date),
-    });
+    mutation.mutate(data);
   };
 
   const services = [

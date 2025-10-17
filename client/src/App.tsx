@@ -11,6 +11,8 @@ import ChemicalPeels from "./pages/chemical-peels";
 import Appointments from "./pages/appointments";
 import Login from "./pages/login";
 import Dashboard from "./pages/doctor/dashboard";
+import Register from "./pages/Register";
+import NotFound from "./pages/not-found";
 
 function Router() {
   return (
@@ -22,7 +24,9 @@ function Router() {
       <Route path="/services/chemical-peels" component={ChemicalPeels} />
       <Route path="/appointments" component={Appointments} />
       <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="/doctor/dashboard" component={Dashboard} />
+      <Route component={NotFound} />
     </Switch>
   );
 }

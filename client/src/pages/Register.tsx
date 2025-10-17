@@ -9,14 +9,14 @@ import { useLocation } from "wouter";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
-const loginSchema = z.object({
+const registerSchema = z.object({
   username: z.string().min(1, "Username is required"),
-  password: z.string().min(1, "Password is required"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-type FormData = z.infer<typeof loginSchema>;
+type FormData = z.infer<typeof registerSchema>;
 
-const Login = () => {
+const Register = () => {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
@@ -25,22 +25,26 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(registerSchema),
   });
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        setLocation("/doctor/dashboard");
+        toast({
+          title: "Success",
+          description: "Registration successful! You can now log in.",
+        });
+        setLocation("/login");
       } else {
         toast({
           title: "Error",
-          description: "Invalid username or password.",
+          description: "Registration failed. Please try again.",
           variant: "destructive",
         });
       }
@@ -59,7 +63,7 @@ const Login = () => {
       <main className="flex-grow py-20 bg-gray-50 flex items-center justify-center">
         <div className="max-w-md w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-extrabold text-gray-900">Doctor Login</h1>
+            <h1 className="text-3xl font-extrabold text-gray-900">Doctor Registration</h1>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white p-8 rounded-lg shadow-md">
             <div>
@@ -73,7 +77,7 @@ const Login = () => {
               {errors.password && <p className="text-red-500 mt-1">{errors.password.message}</p>}
             </div>
             <Button type="submit" className="w-full">
-              Login
+              Register
             </Button>
           </form>
         </div>
@@ -83,4 +87,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
