@@ -9,9 +9,9 @@ import Footer from "@/components/footer";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         <Hero />
         <About />
         <Services />

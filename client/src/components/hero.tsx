@@ -1,84 +1,62 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { fadeInVariants, slideInLeftVariants, slideInRightVariants } from "@/lib/animations";
+import { useLocation } from "wouter";
 
 const Hero = () => {
+  const [, setLocation] = useLocation();
+
+  const handleNavigation = (href: string) => {
+    setLocation(href);
+  };
+
   return (
-    <section id="home" className="pt-16 min-h-screen flex items-center animated-bg relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-xl floating-animation"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl floating-animation" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -bottom-32 left-20 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl floating-animation" style={{animationDelay: '4s'}}></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
-            className="text-white"
-            variants={slideInLeftVariants}
-            initial="hidden"
-            animate="visible"
+    <section id="home" className="pt-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
           >
-            <div className="inline-flex items-center px-4 py-2 rounded-full glass-card mb-6">
-              <span className="text-sm font-medium">✨ Premium Skincare Excellence</span>
-            </div>
-            <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-8 text-shadow" data-testid="hero-title">
-              Transform Your Skin with{" "}
-              <span className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Expert Care</span>
+            <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6" data-testid="hero-title">
+              Discover Your Best Skin
             </h1>
-            <p className="text-xl lg:text-2xl mb-10 text-blue-50 leading-relaxed max-w-2xl" data-testid="hero-subtitle">
-              Premium aesthetic treatments and personalized skincare solutions that reveal your most radiant self at Ukaash Skin Clinic
+            <p className="text-lg lg:text-xl text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0" data-testid="hero-subtitle">
+              At Ukaash Skin Clinic, we offer personalized treatments to help you achieve a radiant and youthful complexion.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex justify-center lg:justify-start space-x-4">
               <Button
                 size="lg"
-                className="bg-white/90 backdrop-blur-sm text-primary px-10 py-6 text-lg font-semibold hover:bg-white hover:scale-105 transition-all duration-300 neon-glow"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 text-lg font-semibold rounded-full transition-transform transform hover:scale-105"
+                onClick={() => handleNavigation("/appointments")}
                 data-testid="button-book-consultation"
               >
-                Book Consultation
+                Book a Consultation
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="glass-card border-white/30 text-white px-10 py-6 text-lg font-semibold hover:bg-white/10 hover:scale-105 transition-all duration-300"
+                className="border-gray-400 text-gray-800 hover:bg-gray-200 px-8 py-3 text-lg font-semibold rounded-full transition-transform transform hover:scale-105"
+                onClick={() => handleNavigation("/services")}
                 data-testid="button-learn-more"
               >
-                Learn More
+                Explore Services
               </Button>
             </div>
-            
-            {/* Stats */}
-            <div className="flex items-center gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">5000+</div>
-                <div className="text-blue-100 text-sm">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">10+</div>
-                <div className="text-blue-100 text-sm">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">15+</div>
-                <div className="text-blue-100 text-sm">Expert Treatments</div>
-              </div>
-            </div>
           </motion.div>
-          <motion.div 
-            className="lg:pl-12 relative"
-            variants={slideInRightVariants}
-            initial="hidden"
-            animate="visible"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl blur opacity-30 floating-animation"></div>
-              <img
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-                alt="Modern aesthetic clinic interior"
-                className="rounded-3xl shadow-2xl w-full h-auto relative z-10 border border-white/20"
-                data-testid="hero-image"
-              />
-            </div>
+            <img
+              src="https://images.unsplash.com/photo-1616394584738-65a414941558?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+              alt="Woman with glowing skin"
+              className="rounded-lg shadow-xl w-full h-auto"
+              data-testid="hero-image"
+            />
           </motion.div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { ArrowLeft, Clock, Star, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { fadeInVariants, slideInLeftVariants, slideInRightVariants } from "@/lib/animations";
 
 const LaserTreatments = () => {
   const benefits = [
