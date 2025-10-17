@@ -49,6 +49,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // User registration
+  app.post("/api/register", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      await storage.createUser({ username, password });
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to register user" });
+    }
+  });
+
+  // User login
+  app.post("/api/login", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const user = await storage.getUserByUsername(username);
+      if (!user) {
+        return res.status(401).json({ success: false, error: "Invalid credentials" });
+      }
+      const isValid = await storage.validateUserPassword(user.id, password);
+      if (!isValid) {
+        return res.status(401).json({ success: false, error: "Invalid credentials" });
+      }
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to login" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

@@ -1,12 +1,14 @@
 import { type User, type InsertUser, type ContactSubmission, type InsertContact } from "@shared/schema";
 import { type Appointment, type InsertAppointment } from "@shared/appointments";
 import { randomUUID } from "crypto";
+import bcrypt from "bcrypt";
 
 export interface IStorage {
   // User methods
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  validateUserPassword(id: string, p: string): Promise<boolean>;
 
   // Contact submission methods
   createContactSubmission(contact: InsertContact): Promise<ContactSubmission>;
@@ -33,9 +35,19 @@ export class MemStorage implements IStorage {
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const user: User = { ...insertUser, id: randomUUID() };
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(insertUser.password, saltRounds);
+    const user: User = { ...insertUser, password: hashedPassword, id: randomUUID() };
     this.users.set(user.id, user);
     return user;
+  }
+
+  async validateUserPassword(id: string, p: string): Promise<boolean> {
+    const user = await this.getUser(id);
+    if (!user) {
+      return false;
+    }
+    return bcrypt.compare(p, user.password);
   }
 
   // Contact submission methods

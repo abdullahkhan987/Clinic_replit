@@ -132,19 +132,6 @@ const Contact = () => {
                   {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                 </div>
                 <div>
-                  <Label>Service Interest</Label>
-                  <Select onValueChange={(value) => setValue("serviceInterest", value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {services.map((service) => (
-                        <SelectItem key={service} value={service}>{service}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
                   <Label htmlFor="message">Message</Label>
                   <Textarea id="message" {...register("message")} />
                   {errors.message && <p className="text-red-500">{errors.message.message}</p>}
